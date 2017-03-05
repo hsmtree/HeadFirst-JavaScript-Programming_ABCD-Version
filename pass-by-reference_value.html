@@ -9,19 +9,21 @@
   function callTest(variable, object){         // 인자 object 도 carObject 를 가르킴(정확히는 메모리 주소)
     variable = "DEFG";  // 값 변경
     console.log("함수속의 변수 : " + variable);     // 값을 복사했기 때문에 함수 내에서만 유효
+    object.model = "500c"; // 요소변경
     object.year = 1957; // 요소추가
     console.log("함수속의 객체 : " + object.year);
   }
 
   callTest(abcdVariable, carObject);
   console.log("pass by value 결과 : " + abcdVariable);        // ABCD 변화 없음
+  console.log("pass by reference 결과 : " + carObject.model);  // 1957 변경된 요소에 접근 가능
   console.log("pass by reference 결과 : " + carObject.year);  // 1957 추가된 요소에 접근 가능
 
   /* test 2 */
-//  var originA = [1, 2];
-//  var originB = originA;
-//
-//  originA = null;
-//  console.log(originB); // 1,2 객체의 참조(메모리 주소)가 살아있음
+  var originA = [1, 2];
+  var originB = originA;
+
+  originA = null;
+  console.log(originB); // 1,2 객체의 참조(메모리 주소)가 살아있음
 
 </script>
